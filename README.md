@@ -10,22 +10,22 @@ Fortunately, I have the entirety of the collection on my old iPod video, and thr
 
 ## Progress
 
-[x] Volume 1
-[] Volume 2
-[] Volume 3
-[] Volume 4
-[] Volume 5
-[] Volume 6
-[] Volume 7
-[] Volume 8
-[] Volume 9
-[] Volume 10
-[] Volume 11
-[] Volume 12
-[] Volume 13
-[] Volume 14
-[] Volume 15
-[] Volume 15-1
-[] Volume 15-2
-[] Volume 16
-[] Volume 17
+- [x] Volume 1
+- [ ] Volume 2
+- [ ] Volume 3
+- [ ] Volume 4
+- [ ] Volume 5
+- [ ] Volume 6
+- [ ] Volume 7
+- [ ] Volume 8
+- [ ] Volume 9
+- [ ] Volume 10
+- [ ] Volume 11
+- [ ] Volume 12
+- [ ] Volume 13
+- [ ] Volume 14
+- [ ] Volume 15
+- [ ] Volume 15-1
+- [ ] Volume 15-2
+- [ ] Volume 16
+- [ ] Volume 17
