@@ -8,15 +8,9 @@ Without question, one of the pillars of the website was its use of music and the
 
 Fortunately, I have the entirety of the collection on my old iPod video, and through the next couple of weeks, I'll work on getting all of them uploaded for your listening pleasure.
 
-## TODO
-
-- [] Restrict access to specific user for the application
-- [] Add import ordering, prettier, strict TS checks
-- [] Clean things up!
-
 ## Progress
 
-- [] Volume 1
+- [x] Volume 1
 - [] Volume 2
 - [] Volume 3
 - [] Volume 4

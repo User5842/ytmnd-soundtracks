@@ -6,8 +6,8 @@
     "build": "next build",
     "dev": "next dev",
     "format": "prettier --write .",
-    "lint": "next lint",
-    "prebuild": "npm run format",
+    "lint": "next lint -- --fix",
+    "prebuild": "npm run lint && npm run format",
     "start": "next start"
   },
   "dependencies": {
@@ -17,16 +17,19 @@
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
     "bootstrap": "^5.2.3",
-    "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
     "next": "13.1.6",
     "react": "18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-dom": "18.2.0",
-    "sharp": "^0.31.3",
-    "typescript": "4.9.5"
+    "sharp": "^0.31.3"
   },
   "devDependencies": {
-    "prettier": "2.8.3"
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.50.0",
+    "eslint": "^8.33.0",
+    "prettier": "2.8.3",
+    "typescript": "^4.9.5"
   }
 }

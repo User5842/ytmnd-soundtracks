@@ -1,16 +1,19 @@
 import Head from "next/head";
 import Image from "next/image";
-import { MouseEventHandler, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Badge, ListGroup } from "react-bootstrap";
 
 import volumeOneCoverArt from "../../public/assets/covers/volume-one.jpg";
 
+interface Tracks {
+  key: string;
+  name: string;
+}
+
 export default function Home() {
   const [audioSource, setAudioSource] = useState("");
   const [volume, setVolume] = useState("volume-one");
-  const [tracks, setTracks] = useState<Array<{ key: string; name: string }>>(
-    []
-  );
+  const [tracks, setTracks] = useState<Array<Tracks>>([]);
 
   const volumes = [
     {
@@ -52,8 +55,8 @@ export default function Home() {
         <header>
           <h1>YTMND Soundtracks</h1>
           <p>
-            A compilation musical recordings used in fads and popular pages on
-            the YTMND web site.
+            A compilation of musical recordings used in fads and popular pages
+            on the YTMND web site.
           </p>
           <p>
             Additional information can be found on the official{" "}
