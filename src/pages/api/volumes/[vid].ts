@@ -1,6 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-
 import { ListObjectsV2Command, S3Client } from "@aws-sdk/client-s3";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { vid } = req.query;

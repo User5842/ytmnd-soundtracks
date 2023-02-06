@@ -1,19 +1,23 @@
+import { useState } from "react";
+import { Badge, ListGroup } from "react-bootstrap";
+import { useQuery } from "react-query";
 import Head from "next/head";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { Badge, ListGroup } from "react-bootstrap";
 
 import volumeOneCoverArt from "../../public/assets/covers/volume-one.jpg";
 
-interface Tracks {
+interface Track {
   key: string;
   name: string;
+}
+
+interface VolumeData {
+  tracks: Array<Track>;
 }
 
 export default function Home() {
   const [audioSource, setAudioSource] = useState("");
   const [volume, setVolume] = useState("volume-one");
-  const [tracks, setTracks] = useState<Array<Tracks>>([]);
 
   const volumes = [
     {
@@ -26,23 +30,23 @@ export default function Home() {
     },
   ];
 
+  const fetchVolume = (e: React.MouseEvent) => {
+    const target = e.target as HTMLButtonElement;
+    setVolume(target.dataset.volumeKey as string);
+    refetch().catch(console.error);
+  };
+
   const trackClicked = (e: React.MouseEvent) => {
     const target = e.target as HTMLButtonElement;
     const track = encodeURIComponent(target.dataset.trackKey as string);
     setAudioSource(`https://${volume}.s3.amazonaws.com/${track}`);
   };
 
-  const volumeClicked = (e: React.MouseEvent) => {
-    const target = e.target as HTMLButtonElement;
-    setVolume(target.dataset.volumeKey as string);
-  };
-
-  useEffect(() => {
-    fetch(`/api/volumes/${volume}`)
-      .then((res) => res.json())
-      .then((volumeData) => setTracks(volumeData.tracks))
-      .catch(console.error);
-  }, [volume]);
+  const { data, refetch } = useQuery<VolumeData, Error>(
+    "volumeData",
+    () => fetch(`/api/volumes/${volume}`).then((res) => res.json()),
+    { refetchOnWindowFocus: false }
+  );
 
   return (
     <>
@@ -78,7 +82,7 @@ export default function Home() {
                   className="d-flex justify-content-between align-items-start"
                   data-volume-key={volume.key}
                   key={volume.key}
-                  onClick={volumeClicked}
+                  onClick={fetchVolume}
                 >
                   <Image
                     alt={volume.alt}
@@ -99,7 +103,7 @@ export default function Home() {
           </div>
           <div className="col h-100 overflow-auto">
             <ListGroup as="ol" numbered>
-              {tracks.map((track) => (
+              {data?.tracks.map((track) => (
                 <ListGroup.Item
                   action
                   data-track-key={track.key}
