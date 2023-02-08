@@ -8,10 +8,15 @@ Without question, one of the pillars of the website was its use of music and the
 
 Fortunately, I have the entirety of the collection on my old iPod video, and through the next couple of weeks, I'll work on getting all of them uploaded for your listening pleasure.
 
+## TODO
+
+1. use react bootstrap where possible
+2. break up components
+
 ## Progress
 
 - [x] Volume 1
-- [ ] Volume 2
+- [x] Volume 2
 - [ ] Volume 3
 - [ ] Volume 4
 - [ ] Volume 5

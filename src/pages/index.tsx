@@ -1,52 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Badge, ListGroup } from "react-bootstrap";
-import { useQuery } from "react-query";
 import Head from "next/head";
 import Image from "next/image";
 
-import volumeOneCoverArt from "../../public/assets/covers/volume-one.jpg";
-
-interface Track {
-  key: string;
-  name: string;
-}
-
-interface VolumeData {
-  tracks: Array<Track>;
-}
+import { tracks } from "../data/tracks";
+import { volumes } from "../data/volumes";
+import { Track } from "../types/Track.interface";
+import { TrackMetadata } from "../types/TrackMetadata.interface";
+import { VolumeData } from "../types/VolumeData.interface";
 
 export default function Home() {
   const [audioSource, setAudioSource] = useState("");
+  const [trackMetadata, setTrackMetadata] = useState<TrackMetadata>();
+  const [volumeData, setVolumeData] = useState<VolumeData>({ tracks: [] });
   const [volume, setVolume] = useState("volume-one");
 
-  const volumes = [
-    {
-      alt: "Sean Connery in Finding Forrester",
-      coverArt: volumeOneCoverArt,
-      key: "volume-one",
-      name: "Volume One",
-      release: "October 29, 2005",
-      tracks: 20,
-    },
-  ];
+  function onTrackClick({ key, name }: Track) {
+    setAudioSource(
+      `https://${volume}.s3.amazonaws.com/${encodeURIComponent(key)}`
+    );
+    console.log(tracks[name]);
+    setTrackMetadata(tracks[name]);
+  }
 
-  const fetchVolume = (e: React.MouseEvent) => {
-    const target = e.target as HTMLButtonElement;
-    setVolume(target.dataset.volumeKey as string);
-    refetch().catch(console.error);
-  };
-
-  const trackClicked = (e: React.MouseEvent) => {
-    const target = e.target as HTMLButtonElement;
-    const track = encodeURIComponent(target.dataset.trackKey as string);
-    setAudioSource(`https://${volume}.s3.amazonaws.com/${track}`);
-  };
-
-  const { data, refetch } = useQuery<VolumeData, Error>(
-    "volumeData",
-    () => fetch(`/api/volumes/${volume}`).then((res) => res.json()),
-    { refetchOnWindowFocus: false }
-  );
+  useEffect(() => {
+    fetch(`/api/volumes/${volume}`)
+      .then((res) => res.json())
+      .then(setVolumeData)
+      .catch(console.error);
+  }, [volume]);
 
   return (
     <>
@@ -80,9 +62,8 @@ export default function Home() {
                 <ListGroup.Item
                   action
                   className="d-flex justify-content-between align-items-start"
-                  data-volume-key={volume.key}
                   key={volume.key}
-                  onClick={fetchVolume}
+                  onClick={() => setVolume(volume.key)}
                 >
                   <Image
                     alt={volume.alt}
@@ -103,22 +84,36 @@ export default function Home() {
           </div>
           <div className="col h-100 overflow-auto">
             <ListGroup as="ol" numbered>
-              {data?.tracks.map((track) => (
+              {volumeData.tracks.map((track) => (
                 <ListGroup.Item
                   action
-                  data-track-key={track.key}
                   key={track.key}
-                  onClick={trackClicked}
+                  onClick={() => onTrackClick(track)}
                 >
                   {track.name}
                 </ListGroup.Item>
               ))}
             </ListGroup>
           </div>
-          <div className="col h-100 overflow-auto">
-            <audio autoPlay controls src={audioSource}>
-              <a href={audioSource}>Download audio</a>
-            </audio>
+          <div className="col h-100 d-flex flex-column gap-3">
+            <iframe
+              allowFullScreen
+              className="container-fluid flex-grow-1"
+              scrolling="no"
+              src={trackMetadata?.exampleLink}
+              title={trackMetadata?.exampleName}
+            ></iframe>
+            <div>
+              <p>
+                <mark>Fad</mark> {trackMetadata?.fadName}
+              </p>
+              <p>
+                <mark>Example</mark> {trackMetadata?.exampleName}
+              </p>
+              <audio controls src={audioSource}>
+                <a href={audioSource}>Download audio</a>
+              </audio>
+            </div>
           </div>
         </div>
       </section>
