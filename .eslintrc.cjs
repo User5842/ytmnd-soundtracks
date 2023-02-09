@@ -10,6 +10,7 @@ module.exports = {
     {
       files: ["*.js", "*.jsx", "*.ts", "*.tsx"],
       rules: {
+        "@typescript-eslint/no-non-null-assertion": "off",
         "simple-import-sort/imports": [
           "error",
           {

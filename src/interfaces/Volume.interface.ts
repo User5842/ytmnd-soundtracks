@@ -5,6 +5,7 @@ export interface Volume {
   readonly coverArt: StaticImageData;
   readonly key: string;
   readonly name: string;
+  readonly order: number;
   readonly release: string;
   readonly tracks: number;
 }

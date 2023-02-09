@@ -1,6 +1,6 @@
-import { TrackMetadata } from "../types/TrackMetadata.interface";
+import { Track } from "../interfaces/Track.interface";
 
-export const tracks: Record<string, TrackMetadata> = {
+export const tracksMap: Record<string, Partial<Track>> = {
   "(I've Got A) Golden Ticket": {
     exampleLink: "",
     exampleName: "",

@@ -1,34 +1,30 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Badge, ListGroup } from "react-bootstrap";
 import Head from "next/head";
 import Image from "next/image";
 
-import { tracks } from "../data/tracks";
-import { volumes } from "../data/volumes";
-import { Track } from "../types/Track.interface";
-import { TrackMetadata } from "../types/TrackMetadata.interface";
-import { VolumeData } from "../types/VolumeData.interface";
+import { Track } from "../interfaces/Track.interface";
+import { Volume } from "../interfaces/Volume.interface";
 
 export default function Home() {
-  const [audioSource, setAudioSource] = useState("");
-  const [trackMetadata, setTrackMetadata] = useState<TrackMetadata>();
-  const [volumeData, setVolumeData] = useState<VolumeData>({ tracks: [] });
+  const [track, setTrack] = useState<Track>();
+  const [tracks, setTracks] = useState<Array<Track>>([]);
   const [volume, setVolume] = useState("volume-one");
-
-  function onTrackClick({ key, name }: Track) {
-    setAudioSource(
-      `https://${volume}.s3.amazonaws.com/${encodeURIComponent(key)}`
-    );
-    console.log(tracks[name]);
-    setTrackMetadata(tracks[name]);
-  }
+  const [volumes, setVolumes] = useState<Array<Volume>>([]);
 
   useEffect(() => {
-    fetch(`/api/volumes/${volume}`)
+    fetch(`/api/volume/${volume}`)
       .then((res) => res.json())
-      .then(setVolumeData)
+      .then(setTracks)
       .catch(console.error);
   }, [volume]);
+
+  useEffect(() => {
+    fetch(`/api/volumes`)
+      .then((res) => res.json())
+      .then(setVolumes)
+      .catch(console.error);
+  }, []);
 
   return (
     <>
@@ -84,11 +80,11 @@ export default function Home() {
           </div>
           <div className="col h-100 overflow-auto">
             <ListGroup as="ol" numbered>
-              {volumeData.tracks.map((track) => (
+              {tracks.map((track) => (
                 <ListGroup.Item
                   action
-                  key={track.key}
-                  onClick={() => onTrackClick(track)}
+                  key={track.name}
+                  onClick={() => setTrack(track)}
                 >
                   {track.name}
                 </ListGroup.Item>
@@ -100,18 +96,18 @@ export default function Home() {
               allowFullScreen
               className="container-fluid flex-grow-1"
               scrolling="no"
-              src={trackMetadata?.exampleLink}
-              title={trackMetadata?.exampleName}
+              src={track?.exampleLink}
+              title={track?.exampleName}
             ></iframe>
             <div>
               <p>
-                <mark>Fad</mark> {trackMetadata?.fadName}
+                <mark>Fad</mark> {track?.fadName}
               </p>
               <p>
-                <mark>Example</mark> {trackMetadata?.exampleName}
+                <mark>Example</mark> {track?.exampleName}
               </p>
-              <audio controls src={audioSource}>
-                <a href={audioSource}>Download audio</a>
+              <audio controls src={track?.audio}>
+                <a href={track?.audio}>Download audio</a>
               </audio>
             </div>
           </div>
