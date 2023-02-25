@@ -28,7 +28,7 @@ export const volumesMap: Record<string, Volume> = {
     name: "Volume One",
     order: 1,
     release: "October 29, 2005",
-    tracks: 20,
+    tracks: 19,
   },
   "volume-two": {
     alt: "Milton Waddams in Office Space",

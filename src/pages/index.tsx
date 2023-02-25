@@ -26,6 +26,21 @@ export default function Home() {
       .catch(console.error);
   }, []);
 
+  const firstTimeUse = (
+    <>
+      <h5 className="card-title">
+        Pick a song to see more information about it
+      </h5>
+      <p className="card-text">
+        Every volume contains a set of tracks with its own set of metadata,
+        including the fad where it came from and an example of the YTMND
+      </p>
+      <a href="#" className="btn btn-primary">
+        Choose for me!
+      </a>
+    </>
+  );
+
   return (
     <>
       <Head>
@@ -97,8 +112,50 @@ export default function Home() {
               ))}
             </ListGroup>
           </div>
-          <div className="col h-100 d-flex flex-column gap-3">
-            <iframe
+          <div className="col h-100">
+            <div className="card">
+              <div className="card-body d-flex flex-column gap-3">
+                {track == null ? (
+                  firstTimeUse
+                ) : (
+                  <>
+                    <h5 className="card-title">{track.name}</h5>
+                    {/* <p className="card-text">
+                      The <mark>fad</mark> surrounding this YTMND was{" "}
+                      <a
+                        href={track?.fadLink}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        {track?.fadName}
+                      </a>
+                    </p> */}
+                    <p className="card-text">
+                      An example of the <strong>fad</strong> is{" "}
+                      <a
+                        href={track?.fadLink}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        {track?.fadName}
+                      </a>
+                    </p>
+                    <audio controls src={track?.audio}>
+                      <a href={track?.audio}>Download audio</a>
+                    </audio>
+                    <a
+                      href={track.exampleLink}
+                      className="btn btn-primary"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      View the YTMND!
+                    </a>
+                  </>
+                )}
+              </div>
+            </div>
+            {/* <iframe
               allowFullScreen
               className="container-fluid flex-grow-1"
               src={track?.exampleLink}
@@ -128,7 +185,7 @@ export default function Home() {
               <audio controls src={track?.audio}>
                 <a href={track?.audio}>Download audio</a>
               </audio>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

@@ -5,4 +5,5 @@ export interface Track {
   readonly fadLink: string;
   readonly fadName: string;
   readonly name: string;
+  readonly order?: number;
 }

@@ -24,6 +24,7 @@ export const tracksMap: Record<string, Partial<Track>> = {
     exampleName: "",
     fadLink: "",
     fadName: "",
+    order: 0,
   },
   "A Kaleidoscope Of Mathematics": {
     exampleLink: "",
@@ -301,6 +302,7 @@ export const tracksMap: Record<string, Partial<Track>> = {
       "Paris Hilton doesn't change facial expressions (original sound)",
     fadLink: "https://wiki.ytmnd.com/Facial_expressions",
     fadName: "Facial expressions / Call On Me fad",
+    order: 3,
   },
   "Captain Planet": {
     exampleLink: "",
@@ -463,6 +465,7 @@ export const tracksMap: Record<string, Partial<Track>> = {
     exampleName: "English Interpretation of Numa Numa Yay (refresh)",
     fadLink: "https://wiki.ytmnd.com/Music-related_fadsxxxxx",
     fadName: "Phonetic interpretations",
+    order: 8,
   },
   Dreamland: {
     exampleLink: "",
@@ -475,6 +478,7 @@ export const tracksMap: Record<string, Partial<Track>> = {
     exampleName: "snoop doing it old school, REAL old school",
     fadLink: "https://wiki.ytmnd.com/Drop_It_Like_It%27s_Hot",
     fadName: "Drop It Like It's Hot",
+    order: 4,
   },
   "Du Hast": {
     exampleLink: "",
@@ -625,6 +629,7 @@ export const tracksMap: Record<string, Partial<Track>> = {
     exampleName: "German Super Mario Brothers Super Show",
     fadLink: "https://wiki.ytmnd.com/Interpretation",
     fadName: "Phonetic interpretations",
+    order: 16,
   },
   "Get Get Down (Original Extended Mix)": {
     exampleLink: "",
@@ -829,6 +834,7 @@ export const tracksMap: Record<string, Partial<Track>> = {
     exampleName: "HOTTEST. GIRL. EVER. WOW.",
     fadLink: "",
     fadName: "",
+    order: 15,
   },
   "I'm So Ronery": {
     exampleLink: "",
@@ -913,6 +919,7 @@ export const tracksMap: Record<string, Partial<Track>> = {
     exampleName: "YTMND is many things... (Refresh)",
     fadLink: "",
     fadName: "",
+    order: 1,
   },
   "Intro To Volume Seven": {
     exampleLink: "",
@@ -1273,6 +1280,7 @@ export const tracksMap: Record<string, Partial<Track>> = {
     exampleName: "Darth Vader vs Dave Chappelle... Mortal Kombat !",
     fadLink: "",
     fadName: "",
+    order: 19,
   },
   "Moskau, Moskau": {
     exampleLink: "",
@@ -1291,6 +1299,7 @@ export const tracksMap: Record<string, Partial<Track>> = {
     exampleName: "Pee-Wee gets HASSAN'D (refresh)",
     fadLink: "https://wiki.ytmnd.com/Muhammad_Hassan",
     fadName: "Muhammad Hassan interruptions",
+    order: 9,
   },
   "Music Sounds Better With You (Radio Edit)": {
     exampleLink: "",
@@ -1687,6 +1696,7 @@ export const tracksMap: Record<string, Partial<Track>> = {
     exampleName: "Butt Racing Grand Prix",
     fadLink: "https://wiki.ytmnd.com/Butt_racing",
     fadName: "Butt racing",
+    order: 10,
   },
   "Splish Splash": {
     exampleLink: "",
@@ -1735,6 +1745,7 @@ export const tracksMap: Record<string, Partial<Track>> = {
     exampleName: "Conan is...AN ALLIGATOR",
     fadLink: "https://wiki.ytmnd.com/Conan_is...",
     fadName: "Conan is...",
+    order: 2,
   },
   "Strokin'": {
     exampleLink: "",
@@ -1801,6 +1812,7 @@ export const tracksMap: Record<string, Partial<Track>> = {
     exampleName: "Sony PSP",
     fadLink: "https://wiki.ytmnd.com/PSP",
     fadName: "It's not a defect, it's a feature!",
+    order: 14,
   },
   "Take On Me": {
     exampleLink: "",
@@ -1825,6 +1837,7 @@ export const tracksMap: Record<string, Partial<Track>> = {
     exampleName: "Gay Fuel Commercial",
     fadLink: "https://wiki.ytmnd.com/Gay_Fuel",
     fadName: "Gay Fuel, Spoiler",
+    order: 5,
   },
   Technologic: {
     exampleLink: "",
@@ -1837,6 +1850,7 @@ export const tracksMap: Record<string, Partial<Track>> = {
     exampleName: "I love the tender crisp bacon chedder ranch (Original)",
     fadLink: "https://wiki.ytmnd.com/Tender_Crisp_Bacon_Cheddar_Ranch ",
     fadName: "Tender Crisp Bacon Cheddar Ranch",
+    order: 7,
   },
   "The 900 Number (Original Mix)": {
     exampleLink: "",
@@ -1897,6 +1911,7 @@ export const tracksMap: Record<string, Partial<Track>> = {
     exampleName: "Meet Hurricane Wilma",
     fadLink: "http://ytmnd.com/assets/c212cb91ba6553fa5c82717b47697aa2",
     fadName: "Hurricane Wilma",
+    order: 13,
   },
   "The Fresh Prince Of Bel-Air": {
     exampleLink: "",
@@ -1957,6 +1972,7 @@ export const tracksMap: Record<string, Partial<Track>> = {
     exampleName: "You knew they'd get it first....",
     fadLink: "http://exhalted.ytmnd.com/",
     fadName: "Victory Fad",
+    order: 12,
   },
   "The Razor Gator Anthem 2": {
     exampleLink: "",
@@ -2029,6 +2045,7 @@ export const tracksMap: Record<string, Partial<Track>> = {
     exampleName: "medieval nigga stole my steed",
     fadLink: "https://wiki.ytmnd.com/Medieval",
     fadName: "Medieval",
+    order: 6,
   },
   Thriller: {
     exampleLink: "",
@@ -2065,6 +2082,7 @@ export const tracksMap: Record<string, Partial<Track>> = {
     exampleName: "HAMMER TIME",
     fadLink: "http://ytmnd.com/assets/31fe2259f0c1a71f3b6d778efd66b62e",
     fadName: "list",
+    order: 18,
   },
   "Un-Finale": {
     exampleLink: "",
@@ -2077,6 +2095,7 @@ export const tracksMap: Record<string, Partial<Track>> = {
     exampleName: "United States of NOOOOOOOOOOOOOO!",
     fadLink: "https://wiki.ytmnd.com/Music-related_fads",
     fadName: '"United States of ..."',
+    order: 17,
   },
   "Unsolved Mysteries": {
     exampleLink: "",
@@ -2186,11 +2205,12 @@ export const tracksMap: Record<string, Partial<Track>> = {
     fadLink: "",
     fadName: "",
   },
-  "Who's The Nigga_": {
+  "Who's The Nigga": {
     exampleLink: "http://gbsac.ytmnd.com/",
     exampleName: "George Bush SINGS AND CARES about black people!",
     fadLink: "http://ytmnsfw.com/assets/79ff02e45066442429488f11ae8d6aaa",
     fadName: "list",
+    order: 11,
   },
   Wishmaster: {
     exampleLink: "",
